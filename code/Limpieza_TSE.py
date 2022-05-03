@@ -12,9 +12,9 @@ import pandas as pd
 
 #Importamos bases 
 
-elec_2006 = pd.read_excel (r"C:\Users\augusto.solar\Desktop\TSE_2006.xlsx")
-elec_2010 = pd.read_excel (r"C:\Users\augusto.solar\Desktop\TSE_2010.xlsx")
-elec_2016 = pd.read_excel (r"C:\Users\augusto.solar\Desktop\TSE_2016.xlsx")
+elec_2006 = pd.read_excel ("/Users/augusto/Desktop/TSE_2006.xlsx")
+elec_2010 = pd.read_excel ("/Users/augusto/Desktop/TSE_2010.xlsx")
+elec_2016 = pd.read_excel ("/Users/augusto/Desktop/TSE_2016.xlsx")
 
 #Agrupamos cada base por codigo de distrito para tener los votos totales por 
 #canton
@@ -122,11 +122,4 @@ del frames_mar1, elec_2010_mar1, elec_2016_mar1, elec_2006_mar1, abn
 
 panel_abs_mar = pd.merge(panel_mar, panel_abs, on=["Provincia", "Canton", "Año"])
 
-
-
-
-
-
-
-
-
+panel_abs_mar.to_excel("panel_abs_mar.xlsx", sheet_name='abs_mar')  
