@@ -18,7 +18,6 @@ print(cgr.dtypes)
 cgr_v1a = cgr[#Remuneraciones
               (cgr['Grupo Subpartida (COG)'] == '0.01.00--REMUNERACIONES BÁSICAS')
               | (cgr['Grupo Subpartida (COG)'] == '0.02.00--REMUNERACIONES EVENTUALES')
-              | (cgr['Grupo Subpartida (COG)'] == '5.00.00--BIENES DURADEROS') 
               #Servicios
               | (cgr['Grupo Subpartida (COG)'] == '1.01.00--ALQUILERES') 
               | (cgr['Grupo Subpartida (COG)'] == '1.03.00--SERVICIOS COMERCIALES Y FINANCIEROS') 
@@ -44,20 +43,20 @@ cgr_v2 = cgr_v1b.pivot_table(values='Ejecución Aprob.',
                
 #Rename of variables 
 
-#cgr_v3 = cgr_v2.rename(columns={'0.01.00--REMUNERACIONES BÁSICAS':'',
- #                                       '0.02.00--REMUNERACIONES EVENTUALES':'',
-  #                                      '5.00.00--BIENES DURADEROS':'',
-   #                                     '1.01.00--ALQUILERES':'',
-    #                                    '1.03.00--SERVICIOS COMERCIALES Y FINANCIEROS':'',
-     #                                   '1.07.00--CAPACITACIÓN Y PROTOCOLO':'',
-      #                                  '1.08.00--MANTENIMIENTO Y REPARACIÓN':'',
-       #                                 '5.02.00--CONSTRUCCIONES, ADICIONES Y MEJORAS':'', 
-        #                                '5.03.00--BIENES PREEXISTENTES':'' 
-         #                               })
+cgr_v3 = cgr_v2.rename(columns={'0.01.00--REMUNERACIONES BÁSICAS':'remu_bas',
+                                '0.02.00--REMUNERACIONES EVENTUALES':'remu_ev',
+                                '1.01.00--ALQUILERES':'rentals',
+                                '1.03.00--SERVICIOS COMERCIALES Y FINANCIEROS':'serv_cf',
+                                '1.07.00--CAPACITACIÓN Y PROTOCOLO':'cap_prot',
+                                '1.08.00--MANTENIMIENTO Y REPARACIÓN':'maintenance',
+                                '5.01.00--MAQUINARIA, EQUIPO Y MOBILIARIO':'cap_mef',
+                                '5.02.00--CONSTRUCCIONES, ADICIONES Y MEJORAS':'cap_cai', 
+                                '5.03.00--BIENES PREEXISTENTES':'pe_goods' 
+                                })
 
-cgr_v2.to_csv('cgr_clean.csv (Agregado Medio)')
+cgr_v3.to_csv('cgr_clean.csv (Agregado Medio)')
 
 
 #Missing Values 
 
-print(cgr_v2.isna().sum())
+print(cgr_v3.isna().sum())
