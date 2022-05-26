@@ -13,7 +13,7 @@ print(cgr.dtypes) #Variables in a good format
 gasto_total_v0 = cgr.rename(columns ={'Año del presupuesto':'year',
                                       'Nombre de la institución':'municipality',
                                       'Gasto Real':'total_expenses'})
-gasto_total_v1 = gasto_total_v0.groupby(by=['year','municipality']).sum().groupby(level=[0]).cumsum()
+gasto_total_v1 = gasto_total_v0.groupby(by=['year','municipality']).sum()
 gasto_total_v2 = gasto_total_v1.drop(['Gastos Presupuestado'],axis=1)
 
 #Selection of variables 
@@ -50,7 +50,7 @@ cgr_v2b = cgr_v2a.rename(columns={'0.00.00--REMUNERACIONES':'remu',
 cgr_v3 = cgr_v2b.join(gasto_total_v2,lsuffix="_left", rsuffix="_right")
 
 
-cgr_v3.to_csv('cgr_clean.csv (Agregado)')
+cgr_v3.to_csv('cgr_clean (Agregado).csv')
 
 
 #Missing Values

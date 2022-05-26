@@ -65,7 +65,7 @@ cgr_v3 = cgr_v2.rename(columns={'0.01.01--Sueldos para cargos fijos':'salaries',
                                     })
 
 
-cgr_v3.to_csv('cgr_clean.csv (Desagregado)')
+cgr_v3.to_csv('cgr_clean (Desagregado).csv')
 
 
 #Missing Values 

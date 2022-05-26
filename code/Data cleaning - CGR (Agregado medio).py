@@ -54,7 +54,7 @@ cgr_v3 = cgr_v2.rename(columns={'0.01.00--REMUNERACIONES BÁSICAS':'remu_bas',
                                 '5.03.00--BIENES PREEXISTENTES':'pe_goods' 
                                 })
 
-cgr_v3.to_csv('cgr_clean.csv (Agregado Medio)')
+cgr_v3.to_csv('cgr_clean (Agregado Medio).csv')
 
 
 #Missing Values 
